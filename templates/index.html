@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BirthVerse — Your Birthday Story &amp; World History Explorer</title>
+  <link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+<body>
+  <!-- Animated Starfield Canvas -->
+  <canvas id="starfield-canvas" aria-hidden="true"></canvas>
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <div class="app-shell">
+    <!-- Hero Input Deck -->
+    <section class="hero-section">
+      <h1 class="hero-title">
+        Discover What Happened the Day <span class="gradient-text">You Entered the World</span>
+      </h1>
+      <p class="hero-lead">
+        Enter your birthday to unlock major world events on your birth date, your live-ticking days &amp; hours alive,
+        your cosmic speed through the galaxy, the exact moon phase on your birth night, and your 1-billion-second milestone.
+      </p>
+
+      <form id="birthday-form" class="control-deck" autocomplete="off">
+        <div class="input-group">
+          <label for="input-name">Your Name <span class="optional-tag">(Optional)</span></label>
+          <input type="text" id="input-name" name="name" placeholder="Enter your name" maxlength="40" />
+        </div>
+
+        <div class="input-group">
+          <label for="input-date">Your Birth Date <span class="req-tag">*</span></label>
+          <input type="date" id="input-date" name="date" required />
+        </div>
+
+        <div class="input-group submit-group">
+          <button type="submit" id="btn-explore" class="primary-cta">
+            <span>Explore My Birthday</span>
+            <span class="cta-arrow">→</span>
+          </button>
+        </div>
+      </form>
+
+      <div id="error-banner" class="error-banner hidden" role="alert"></div>
+    </section>
+
+    <!-- Results Container -->
+    <main id="results-dashboard" class="results-dashboard hidden">
+
+      <!-- Quick Jump Section Tabs -->
+      <nav class="section-nav" aria-label="Dashboard sections">
+        <a href="#sec-clock" class="sec-link active">⏱️ Live Life Clock</a>
+        <a href="#sec-history" class="sec-link">🌍 On This Day in History</a>
+        <a href="#sec-capsule" class="sec-link">📻 Birth Year Capsule</a>
+        <a href="#sec-biometrics" class="sec-link">💓 Biometrics &amp; Space Speed</a>
+        <a href="#sec-cosmos" class="sec-link">🪐 Moon, Zodiac &amp; Planets</a>
+        <a href="#sec-milestones" class="sec-link">🏆 1B Seconds &amp; Milestones</a>
+        <a href="#sec-passport" class="sec-link">🪪 Life Summary Card</a>
+      </nav>
+
+      <!-- 1. HERO SUMMARY & LIVE LIFE CLOCK -->
+      <section id="sec-clock" class="dashboard-section">
+        <div class="identity-banner glass-card">
+          <div class="identity-left">
+            <div class="serial-pill" id="res-serial">BV-0000</div>
+            <h2 class="identity-heading">
+              <span id="res-greeting-name">Friend</span>, you were born on a
+              <span class="highlight-cyan" id="res-birth-weekday">Saturday</span>
+            </h2>
+            <p class="identity-lore" id="res-weekday-lore"></p>
+            <div class="identity-meta-tags">
+              <span class="meta-tag" id="res-full-birthdate">📅 January 1, 2000</span>
+              <span class="meta-tag" id="res-day-of-year">☀️ Day #1 of the Year</span>
+              <span class="meta-tag" id="res-leap-tag">✨ 6 Leap Years Experienced</span>
+              <span class="meta-tag" id="res-seasons-tag">🍃 104 Seasons Lived</span>
+            </div>
+          </div>
+
+          <div class="next-bday-box">
+            <div class="next-bday-label">NEXT BIRTHDAY COUNTDOWN</div>
+            <div class="next-bday-turning" id="res-next-turning">Turning 27</div>
+            <div class="next-bday-timer">
+              <div><strong id="res-next-days">0</strong><span>Days</span></div>
+              <div><strong id="res-next-hours">0</strong><span>Hours</span></div>
+              <div><strong id="res-next-mins">0</strong><span>Mins</span></div>
+            </div>
+            <div class="progress-track" title="Progress toward next birthday">
+              <div class="progress-fill" id="res-bday-progress" style="width: 50%"></div>
+            </div>
+            <div class="next-bday-sub" id="res-next-date-sub">Falls on a Sunday</div>
+          </div>
+        </div>
+
+        <!-- Primary Live Counters Grid (Days, Hours, Minutes, Seconds, Exact Age) -->
+        <div class="clock-grid">
+          <div class="clock-card glass-card primary-age-card">
+            <div class="clock-card-header">
+              <span class="clock-icon">🎂</span>
+              <span class="clock-title">EXACT CALENDAR AGE</span>
+            </div>
+            <div class="calendar-age-display">
+              <div class="age-unit"><span id="res-years">0</span><small>Years</small></div>
+              <div class="age-unit"><span id="res-months">0</span><small>Months</small></div>
+              <div class="age-unit"><span id="res-days">0</span><small>Days</small></div>
+            </div>
+            <p class="clock-footnote" id="res-total-months-weeks">0 total months • 0 total weeks</p>
+          </div>
+
+          <div class="clock-card glass-card glow-cyan">
+            <div class="clock-card-header">
+              <span class="clock-icon">🌅</span>
+              <span class="clock-title">TOTAL DAYS LIVED</span>
+              <span class="live-dot" title="Live metric"></span>
+            </div>
+            <div class="big-counter" id="live-days">0</div>
+            <p class="clock-footnote">Sunrises &amp; sunsets witnessed on Earth</p>
+          </div>
+
+          <div class="clock-card glass-card glow-violet">
+            <div class="clock-card-header">
+              <span class="clock-icon">⏳</span>
+              <span class="clock-title">TOTAL HOURS LIVED</span>
+              <span class="live-dot" title="Live metric"></span>
+            </div>
+            <div class="big-counter" id="live-hours">0</div>
+            <p class="clock-footnote" id="live-minutes-sub">0 total minutes experienced</p>
+          </div>
+
+          <div class="clock-card glass-card glow-amber">
+            <div class="clock-card-header">
+              <span class="clock-icon">⚡</span>
+              <span class="clock-title">LIVE SECONDS ALIVE</span>
+              <span class="live-badge">LIVE TICKING</span>
+            </div>
+            <div class="big-counter mono-counter" id="live-seconds">0</div>
+            <p class="clock-footnote">Ticking forward in real time every second</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. ON THIS DAY IN WORLD HISTORY & FAMOUS BIRTHDAY TWINS -->
+      <section id="sec-history" class="dashboard-section">
+        <div class="section-header">
+          <div>
+            <span class="section-eyebrow">CHRONICLES OF YOUR BIRTH DATE</span>
+            <h2 class="section-title">What Happened in the World on <span id="res-history-date-label" class="gradient-text">Your Birthday</span></h2>
+          </div>
+          <div class="source-badge" id="res-history-source">Curated Historical Archive</div>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="filter-tabs" role="tablist">
+          <button type="button" class="tab-btn active" data-filter="all">🌟 All Events</button>
+          <button type="button" class="tab-btn" data-filter="World History">🏛️ World History</button>
+          <button type="button" class="tab-btn" data-filter="Science & Tech">🚀 Science &amp; Space</button>
+          <button type="button" class="tab-btn" data-filter="Pop Culture">🎬 Pop Culture &amp; Arts</button>
+          <button type="button" class="tab-btn" data-filter="births">🎂 Famous Birthday Twins</button>
+        </div>
+
+        <!-- Historical Events Timeline Grid -->
+        <div id="history-events-grid" class="history-grid"></div>
+
+        <!-- Famous Birthday Twins Sub-Section -->
+        <div id="famous-births-wrapper" class="famous-births-section">
+          <h3 class="subsection-title">🌟 Icons &amp; Trailblazers Who Share Your Birthday Season</h3>
+          <div id="famous-births-grid" class="births-grid"></div>
+        </div>
+      </section>
+
+      <!-- 3. YOUR BIRTH YEAR TIME CAPSULE -->
+      <section id="sec-capsule" class="dashboard-section">
+        <div class="section-header">
+          <div>
+            <span class="section-eyebrow">RETROSPECTIVE SNAPSHOT</span>
+            <h2 class="section-title">Your Birth Year Time Capsule: <span id="res-capsule-year" class="gradient-text">2000</span></h2>
+          </div>
+          <span class="era-pill" id="res-capsule-era">The Digital Era</span>
+        </div>
+
+        <div class="capsule-layout">
+          <div class="capsule-main glass-card">
+            <div class="capsule-headline-box">
+              <span class="capsule-quote-icon">❝</span>
+              <p id="res-capsule-headline" class="capsule-headline-text"></p>
+            </div>
+
+            <div class="capsule-vibes-grid">
+              <div class="vibe-item">
+                <div class="vibe-label">💻 Technology of Your Birth Era</div>
+                <p id="res-capsule-tech"></p>
+              </div>
+              <div class="vibe-item">
+                <div class="vibe-label">🎵 Soundtracks &amp; Music Vibes</div>
+                <p id="res-capsule-music"></p>
+              </div>
+              <div class="vibe-item">
+                <div class="vibe-label">🍿 Iconic Cinema of the Era</div>
+                <p id="res-capsule-cinema"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="capsule-side glass-card">
+            <h3 class="side-card-title">🌎 Earth When You Arrived</h3>
+            <div class="pop-comparison">
+              <div class="pop-stat">
+                <span class="pop-label">World Population at Birth</span>
+                <strong class="pop-value" id="res-pop-then">6.1B</strong>
+              </div>
+              <div class="pop-stat">
+                <span class="pop-label">Humans Added Since Your Birth</span>
+                <strong class="pop-value highlight-emerald" id="res-pop-added">+2.1B</strong>
+              </div>
+            </div>
+
+            <hr class="subtle-divider" />
+            <h4 class="side-card-subtitle">🏷️ Vintage Price Tags at Birth</h4>
+            <div class="price-tags-list">
+              <div class="price-row">
+                <span>🎟️ Average Movie Ticket</span>
+                <strong id="res-price-movie">$5.00</strong>
+              </div>
+              <div class="price-row">
+                <span>⛽ Gallon of Fuel</span>
+                <strong id="res-price-gas">$1.50</strong>
+              </div>
+              <div class="price-row">
+                <span>🪙 Gold (1 Troy Ounce)</span>
+                <strong id="res-price-gold">$400.00</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. BIOMETRICS & COSMIC SPACE ODYSSEY -->
+      <section id="sec-biometrics" class="dashboard-section">
+        <div class="section-header">
+          <div>
+            <span class="section-eyebrow">YOUR BODY &amp; PLANET IN MOTION</span>
+            <h2 class="section-title">Live Biological Stats &amp; <span class="gradient-text">Cosmic Distance Traveled</span></h2>
+          </div>
+        </div>
+
+        <div class="bio-cosmic-grid">
+          <!-- Heartbeats -->
+          <div class="stat-card glass-card">
+            <div class="stat-icon pulse-heart">❤️</div>
+            <div class="stat-content">
+              <span class="stat-label">HEARTBEATS SINCE BIRTH</span>
+              <strong class="stat-number mono-counter" id="live-heartbeats">0</strong>
+              <span class="stat-sub" id="res-blood-pumped">Pumping millions of liters of life</span>
+            </div>
+          </div>
+
+          <!-- Breaths -->
+          <div class="stat-card glass-card">
+            <div class="stat-icon">🌬️</div>
+            <div class="stat-content">
+              <span class="stat-label">BREATHS TAKEN</span>
+              <strong class="stat-number mono-counter" id="live-breaths">0</strong>
+              <span class="stat-sub">At ~16 restorative breaths per minute</span>
+            </div>
+          </div>
+
+          <!-- Sleep & Dreams -->
+          <div class="stat-card glass-card">
+            <div class="stat-icon">🌙</div>
+            <div class="stat-content">
+              <span class="stat-label">HOURS SPENT SLEEPING &amp; DREAMING</span>
+              <strong class="stat-number" id="res-hours-slept">0</strong>
+              <span class="stat-sub" id="res-dreams-sub">~0 years asleep • ~0 dreams experienced</span>
+            </div>
+          </div>
+
+          <!-- Blinks -->
+          <div class="stat-card glass-card">
+            <div class="stat-icon">👁️</div>
+            <div class="stat-content">
+              <span class="stat-label">TIMES YOU'VE BLINKED</span>
+              <strong class="stat-number mono-counter" id="live-blinks">0</strong>
+              <span class="stat-sub">Snapshots of the waking world</span>
+            </div>
+          </div>
+
+          <!-- Solar Orbit Distance -->
+          <div class="stat-card glass-card cosmic-span-card">
+            <div class="stat-icon">☀️</div>
+            <div class="stat-content">
+              <span class="stat-label">DISTANCE TRAVELED ORBITING THE SUN (29.78 KM/S)</span>
+              <strong class="stat-number mono-counter highlight-cyan" id="live-solar-km">0 km</strong>
+              <span class="stat-sub" id="res-moon-trips">Equivalent to 0 trips to the Moon and back!</span>
+            </div>
+          </div>
+
+          <!-- Galactic Motion -->
+          <div class="stat-card glass-card cosmic-span-card">
+            <div class="stat-icon">🌌</div>
+            <div class="stat-content">
+              <span class="stat-label">JOURNEY THROUGH THE MILKY WAY GALAXY (230 KM/S)</span>
+              <strong class="stat-number mono-counter highlight-violet" id="live-galaxy-km">0 km</strong>
+              <span class="stat-sub" id="res-full-moons">Under the glow of 0 Full Moons since your birth</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. ASTRONOMICAL BIRTH CHART: MOON PHASE, ZODIAC & SOLAR SYSTEM AGES -->
+      <section id="sec-cosmos" class="dashboard-section">
+        <div class="section-header">
+          <div>
+            <span class="section-eyebrow">CELESTIAL ALIGNMENT</span>
+            <h2 class="section-title">Your Birth Night Moon, Zodiac &amp; <span class="gradient-text">Interplanetary Age</span></h2>
+          </div>
+        </div>
+
+        <div class="astro-trio-grid">
+          <!-- Interactive SVG Moon Phase Card -->
+          <div class="astro-card glass-card">
+            <div class="astro-card-top">
+              <span class="astro-tag">LUNAR PHASE AT BIRTH</span>
+              <span class="astro-illum" id="res-moon-illum">50% Illuminated</span>
+            </div>
+            <div class="moon-visual-wrap">
+              <svg id="moon-svg" viewBox="0 0 120 120" width="115" height="115" aria-label="Moon phase illustration"></svg>
+              <div>
+                <h3 class="astro-main-title" id="res-moon-name">Waxing Gibbous</h3>
+                <p class="astro-sub-meta" id="res-moon-age">Lunar Day 11.4 of 29.5</p>
+              </div>
+            </div>
+            <p class="astro-lore" id="res-moon-lore"></p>
+          </div>
+
+          <!-- Western & Chinese Zodiac Card -->
+          <div class="astro-card glass-card">
+            <div class="astro-card-top">
+              <span class="astro-tag">ZODIAC SIGNATURES</span>
+              <span class="astro-illum" id="res-zodiac-element">Element: Fire</span>
+            </div>
+            <div class="zodiac-duo">
+              <div class="zodiac-block">
+                <div class="zodiac-big-symbol" id="res-west-symbol">♏</div>
+                <div>
+                  <div class="zodiac-title" id="res-west-sign">Scorpio</div>
+                  <div class="zodiac-ruler" id="res-west-ruler">Ruled by Pluto &amp; Mars</div>
+                </div>
+              </div>
+              <div class="zodiac-block">
+                <div class="zodiac-big-symbol" id="res-east-emoji">🐉</div>
+                <div>
+                  <div class="zodiac-title" id="res-east-title">Metal Dragon</div>
+                  <div class="zodiac-ruler">Lunar Birth Year</div>
+                </div>
+              </div>
+            </div>
+            <p class="astro-lore" id="res-zodiac-traits"></p>
+          </div>
+
+          <!-- Birthstone & Birth Flower Card -->
+          <div class="astro-card glass-card">
+            <div class="astro-card-top">
+              <span class="astro-tag">EARTH TREASURES</span>
+              <span class="astro-illum" id="res-birth-season">Mid Autumn</span>
+            </div>
+            <div class="gem-visual-wrap">
+              <div class="gem-orb" id="res-gem-orb">💎</div>
+              <div>
+                <h3 class="astro-main-title" id="res-stone-name">Opal &amp; Tourmaline</h3>
+                <p class="astro-sub-meta" id="res-flower-name">🌸 Birth Flower: Marigold</p>
+              </div>
+            </div>
+            <p class="astro-lore" id="res-stone-meaning"></p>
+          </div>
+        </div>
+
+        <!-- Planetary Ages Across the Solar System -->
+        <h3 class="subsection-title">🪐 How Old Are You on Other Worlds?</h3>
+        <div id="planets-grid" class="planets-grid"></div>
+      </section>
+
+      <!-- 6. RARE TEMPORAL MILESTONES (10,000 DAYS, 1 BILLION SECONDS) -->
+      <section id="sec-milestones" class="dashboard-section">
+        <div class="section-header">
+          <div>
+            <span class="section-eyebrow">UNUSUAL CELEBRATIONS</span>
+            <h2 class="section-title">Your Landmark <span class="gradient-text">Temporal Milestones</span></h2>
+          </div>
+        </div>
+        <div id="milestones-grid" class="milestones-grid"></div>
+      </section>
+
+      <!-- 7. SHAREABLE LIFE SUMMARY CARD -->
+      <section id="sec-passport" class="dashboard-section">
+        <div class="passport-wrapper glass-card">
+          <div class="passport-header">
+            <div>
+              <span class="passport-issuer">BIRTHVERSE PERSONAL ARCHIVE</span>
+              <h3 class="passport-title">OFFICIAL BIRTHDAY &amp; LIFE SUMMARY CARD</h3>
+            </div>
+            <div class="passport-actions">
+              <button type="button" id="btn-copy-summary" class="pill-btn">📋 Copy Summary</button>
+              <button type="button" id="btn-print-passport" class="pill-btn accent-pill">🖨️ Print / Save PDF</button>
+            </div>
+          </div>
+
+          <div class="passport-body">
+            <div class="passport-col">
+              <span class="p-field-label">YOUR NAME</span>
+              <strong class="p-field-val" id="pass-name">Friend</strong>
+            </div>
+            <div class="passport-col">
+              <span class="p-field-label">BIRTH DATE</span>
+              <strong class="p-field-val" id="pass-origin">2000-01-01 (Saturday)</strong>
+            </div>
+            <div class="passport-col">
+              <span class="p-field-label">PROFILE ID</span>
+              <strong class="p-field-val highlight-cyan" id="pass-serial">BV-20000101</strong>
+            </div>
+            <div class="passport-col">
+              <span class="p-field-label">DAYS &amp; HOURS LIVED</span>
+              <strong class="p-field-val" id="pass-days-hours">0 Days / 0 Hours</strong>
+            </div>
+            <div class="passport-col">
+              <span class="p-field-label">BIRTH MOON &amp; ZODIAC</span>
+              <strong class="p-field-val" id="pass-astro">Full Moon • Capricorn</strong>
+            </div>
+            <div class="passport-col">
+              <span class="p-field-label">SOLAR ORBIT DISTANCE</span>
+              <strong class="p-field-val" id="pass-distance">0 km</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="app-footer">
+      <p>BirthVerse — Your Birthday Story &amp; World History Explorer</p>
+    </footer>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
