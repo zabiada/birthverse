@@ -1,0 +1,462 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R 11 0 R 13 0 R] /Count 4 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Length 5426 >>
+stream
+0.05 0.08 0.18 rg
+0 706.89 595.28 135 re f
+0.22 0.74 0.97 rg
+0 703.89 595.28 3 re f
+0.22 0.74 0.97 rg
+BT /F2 9 Tf 54.00 799.89 Td (BIRTHVERSE PROJECT ARCHIVE) Tj ET
+1 1 1 rg
+BT /F2 20 Tf 54.00 769.89 Td (BirthVerse  -  Technical & User Documentation) Tj ET
+0.80 0.84 0.90 rg
+BT /F1 11 Tf 54.00 747.89 Td (System Architecture, Algorithms, API Reference & User Guide) Tj ET
+0.60 0.85 0.98 rg
+BT /F2 10 Tf 54.00 725.89 Td (Developed by Zabiada Arman  |  October 2026) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 673.89 Td (System Name: BirthVerse  -  Historical & Temporal Life Analytics) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 656.09 Td (Author & Developer: Zabiada Arman) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 638.29 Td (Version: 1.0.0) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 620.49 Td (Language & Runtime: Python 3.10+ / HTML5 / CSS3 / ES6 JavaScript) Tj ET
+0.07 0.12 0.26 rg
+BT /F2 13.5 Tf 54.00 590.69 Td (1. System Overview) Tj ET
+0.22 0.74 0.97 RG 1.2 w
+54.00 584.69 m 541.28 584.69 l S
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 570.69 Td (BirthVerse is a web-based temporal analytics and historical exploration system written in Python.) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 556.89 Td (When a user submits their birth date \(and optional name\), the system computes an extensive profile) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 543.09 Td (across six analytical dimensions:) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 525.29 Td (1. Exact Chronological & Cumulative Age \(Years, Months, Weeks, Days, Hours, Minutes, and Live) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 511.49 Td (Seconds\).) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 493.69 Td (2. Historical Events & Notable Shared Birthdays occurring on that calendar date.) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 475.89 Td (3. Birth Year Cultural & Demographic Time Capsule \(Global population growth, technology, music,) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 462.09 Td (cinema, and economic benchmarks\).) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 444.29 Td (4. Physiological & Astrophysical Telemetry \(Heartbeats, respiratory cycles, sleep cycles, solar orbit) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 430.49 Td (distance, and galactic travel distance\).) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 412.69 Td (5. Astronomical Birth Chart & Planetary Ages \(Synodic Moon phase, illumination percentage, zodiac) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 398.89 Td (profiles, birthstone, and orbital ages on all eight planets\).) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 381.09 Td (6. Landmark Temporal Milestones \(Exact dates for 10,000 days alive, 100,000 hours, 1 billion seconds,) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 367.29 Td (and an exportable Life Summary Card\).) Tj ET
+0.07 0.12 0.26 rg
+BT /F2 13.5 Tf 54.00 337.49 Td (2. Project Directory Structure) Tj ET
+0.22 0.74 0.97 RG 1.2 w
+54.00 331.49 m 541.28 331.49 l S
+0.95 0.96 0.98 rg
+54.00 109.49 487.28 218.00 re f
+0.82 0.85 0.90 RG 0.6 w
+54.00 109.49 487.28 218.00 re S
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 313.49 Td (birthday/) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 301.49 Td (|---- app.py                                      # Main Python HTTP server & REST API router) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 289.49 Td (|---- birthday_engine.py                          # Temporal, astronomical & biometric computa) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 277.49 Td (|---- history_data.py                             # Hybrid Wikimedia API client & curated hist) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 265.49 Td (|---- README.md                                   # Quick-start guide & project overview) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 253.49 Td (|---- templates/) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 241.49 Td (|   `-- index.html                              # Main application layout & semantic structu) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 229.49 Td (|---- static/) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 217.49 Td (|   |---- css/) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 205.49 Td (|   |   `-- styles.css                          # Architectural dark theme, layout grids & p) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 193.49 Td (|   `-- js/) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 181.49 Td (|       `-- app.js                              # Client-side API controller, 1 Hz live tick) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 169.49 Td (`-- docs/) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 157.49 Td (    |---- BirthVerse_Project_Proposal.docx        # Project Proposal \(Microsoft Word\)) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 145.49 Td (    |---- BirthVerse_Project_Proposal.pdf         # Project Proposal \(PDF\)) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 133.49 Td (    |---- BirthVerse_Project_Documentation.docx   # Technical Documentation \(Microsoft Word\)) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 121.49 Td (    `-- BirthVerse_Project_Documentation.pdf    # Technical Documentation \(PDF\)) Tj ET
+0.07 0.12 0.26 rg
+BT /F2 13.5 Tf 54.00 85.49 Td (3. Backend Architecture & Module Specification) Tj ET
+0.22 0.74 0.97 RG 1.2 w
+54.00 79.49 m 541.28 79.49 l S
+0.85 0.88 0.92 RG 0.6 w
+54.00 42.00 m 541.28 42.00 l S
+0.45 0.50 0.58 rg
+BT /F1 8.5 Tf 54.00 28.00 Td (BirthVerse  |  Developed by Zabiada Arman) Tj ET
+BT /F1 8.5 Tf 486.28 28.00 Td (Page 1 of 4) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 6189 >>
+stream
+0.45 0.50 0.58 rg
+BT /F1 8.5 Tf 54.00 803.89 Td (BirthVerse  -  Technical & User Documentation  -  Developed by Zabiada Arman) Tj ET
+0.85 0.88 0.92 RG 0.6 w
+54.00 796.89 m 541.28 796.89 l S
+0.12 0.22 0.42 rg
+BT /F2 11 Tf 54.00 765.89 Td (3.1 Web Server & API Router \(app.py\)) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 751.89 Td (app.py implements ChronosHTTPRequestHandler \(subclassing http.server.SimpleHTTPRequestHandler\) to) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 738.09 Td (provide a zero-dependency web server capable of serving both static assets and dynamic JSON API) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 724.29 Td (endpoints:) Tj ET
+0.08 0.45 0.72 rg
+BT /F2 10 Tf 60.00 706.49 Td (-) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 706.49 Td (GET /: Serves the main application interface \(templates/index.html\).) Tj ET
+0.08 0.45 0.72 rg
+BT /F2 10 Tf 60.00 690.99 Td (-) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 690.99 Td (GET /api/analyze?date=YYYY-MM-DD&name= OptionalName: Validates query parameters,) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 677.49 Td (invokes compute_birthday_profile\(\), and returns a structured JSON response.) Tj ET
+0.08 0.45 0.72 rg
+BT /F2 10 Tf 60.00 661.99 Td (-) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 661.99 Td (POST /api/analyze: Accepts a JSON request body {"date": "YYYY-MM-DD", "name":) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 648.49 Td ("..."} and returns the computed profile.) Tj ET
+0.08 0.45 0.72 rg
+BT /F2 10 Tf 60.00 632.99 Td (-) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 632.99 Td (GET /static/*: Safely serves stylesheets and JavaScript files with strict path-) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 619.49 Td (traversal protection and appropriate MIME headers.) Tj ET
+0.12 0.22 0.42 rg
+BT /F2 11 Tf 54.00 595.99 Td (3.2 Temporal & Astronomical Computation Engine \(birthday_engine.py\)) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 581.99 Td (birthday_engine.py contains the core mathematical functions:) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 564.19 Td (1. Exact Calendar Age Decomposition:) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 546.39 Td (   Computes exact calendar years, months, and days by accounting for variable month lengths) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 532.59 Td (\(calendar.monthrange\) and leap years \(calendar.isleap\), alongside total elapsed seconds) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 518.79 Td (\(elapsed_seconds = t_now - t_birth\).) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 500.99 Td (2. Synodic Lunar Phase Algorithm \(calculate_moon_phase\):) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 483.19 Td (   Uses the astronomical synodic month constant \(S = 29.530588853 days\) anchored to the reference New) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 469.39 Td (Moon epoch of January 6, 2000 at 18:14 UTC:) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 451.59 Td (   - Cycle Position \(phi\) = \(\(t_birth - t_epoch\) mod S\) / S \(ranging from 0.0 to 1.0\)) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 433.79 Td (   - Illumination \(%\) = \(\(1 - cos\(2 * pi * phi\)\) / 2\) * 100) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 415.99 Td (3. Planetary Orbital Age Calculation:) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 398.19 Td (   Divides total Earth days lived \(D_lived\) by each planet's heliocentric orbital period P_planet) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 384.39 Td (\(Mercury: 87.969 d, Venus: 224.701 d, Earth: 365.256 d, Mars: 686.980 d, Jupiter: 4332.589 d, Saturn:) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 370.59 Td (10759.22 d, Uranus: 30688.5 d, Neptune: 60182.0 d\) and projects the exact calendar date of the user's) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 356.79 Td (next planetary birthday.) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 338.99 Td (4. Physiological & Cosmic Velocity Models:) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 321.19 Td (   - Heartbeats: elapsed_seconds * \(72 / 60\)) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 303.39 Td (   - Respiratory cycles: elapsed_seconds * \(16 / 60\)) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 285.59 Td (   - Solar Orbit Distance: elapsed_seconds * 29.78 km/s) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 267.79 Td (   - Milky Way Galactic Drift: elapsed_seconds * 230.0 km/s) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 249.99 Td (5. Temporal Milestone Projection:) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 232.19 Td (   Adds fixed datetime.timedelta offsets \(1,000 days, 5,000 days, 10,000 days, 100,000 hours, 250,000) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 218.39 Td (hours, 500,000 hours, 1,000,000,000 seconds, 2,000,000,000 seconds\) to the birth timestamp to) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 204.59 Td (determine whether each milestone has been completed or how many days remain until it occurs.) Tj ET
+0.12 0.22 0.42 rg
+BT /F2 11 Tf 54.00 178.79 Td (3.3 Historical & Demographic Archive \(history_data.py\)) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 164.79 Td (history_data.py implements a resilient two-tier data architecture:) Tj ET
+0.08 0.45 0.72 rg
+BT /F2 10 Tf 60.00 146.99 Td (-) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 146.99 Td (Tier 1 \(Live Wikimedia Feed\): Queries) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 133.49 Td (https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/all/{MM}/{DD} with a) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 119.99 Td (2.5-second timeout to fetch live historical events and notable births.) Tj ET
+0.08 0.45 0.72 rg
+BT /F2 10 Tf 60.00 104.49 Td (-) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 104.49 Td (Tier 2 \(Embedded Curated Archive\): Provides curated exact-date highlights, monthly) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 90.99 Td (thematic events across World History, Science & Space, and Culture, plus decade-) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 77.49 Td (by-decade demographic and economic time capsules \(1940s-2020s\) with linear) Tj ET
+0.85 0.88 0.92 RG 0.6 w
+54.00 42.00 m 541.28 42.00 l S
+0.45 0.50 0.58 rg
+BT /F1 8.5 Tf 54.00 28.00 Td (BirthVerse  |  Developed by Zabiada Arman) Tj ET
+BT /F1 8.5 Tf 486.28 28.00 Td (Page 2 of 4) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 5595 >>
+stream
+0.45 0.50 0.58 rg
+BT /F1 8.5 Tf 54.00 803.89 Td (BirthVerse  -  Technical & User Documentation  -  Developed by Zabiada Arman) Tj ET
+0.85 0.88 0.92 RG 0.6 w
+54.00 796.89 m 541.28 796.89 l S
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 773.89 Td (population interpolation. This guarantees instantaneous, error-free operation even) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 760.39 Td (in offline environments.) Tj ET
+0.07 0.12 0.26 rg
+BT /F2 13.5 Tf 54.00 732.89 Td (4. Frontend Design & Interactive Engine) Tj ET
+0.22 0.74 0.97 RG 1.2 w
+54.00 726.89 m 541.28 726.89 l S
+0.12 0.22 0.42 rg
+BT /F2 11 Tf 54.00 704.89 Td (4.1 Architectural Dark Interface \(static/css/styles.css\)) Tj ET
+0.08 0.45 0.72 rg
+BT /F2 10 Tf 60.00 690.89 Td (-) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 690.89 Td (Visual Hierarchy: Built on a deep obsidian-indigo palette \(#050711\) with) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 677.39 Td (translucent glassmorphic surfaces \(backdrop-filter: blur\(18px\)\), subtle 1px) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 663.89 Td (specular borders, and tabular monospace numerals \(font-variant-numeric: tabular-) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 650.39 Td (nums\) so real-time ticking numbers never jitter horizontally.) Tj ET
+0.08 0.45 0.72 rg
+BT /F2 10 Tf 60.00 634.89 Td (-) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 634.89 Td (Single-Line Navigation Dock: A sticky floating navigation bar with 0.45s cubic-) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 621.39 Td (bezier\(0.22, 1, 0.36, 1\) hover transitions allows effortless jumping between) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 607.89 Td (analytical sections.) Tj ET
+0.08 0.45 0.72 rg
+BT /F2 10 Tf 60.00 592.39 Td (-) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 592.39 Td (Print Stylesheet \(@media print\): Automatically hides navigation controls and) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 578.89 Td (background canvases when printing or saving the Official Life Summary Card as a) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 565.39 Td (PDF.) Tj ET
+0.12 0.22 0.42 rg
+BT /F2 11 Tf 54.00 541.89 Td (4.2 Client-Side Controller \(static/js/app.js\)) Tj ET
+0.08 0.45 0.72 rg
+BT /F2 10 Tf 60.00 527.89 Td (-) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 527.89 Td (1 Hz Real-Time Ticker \(startLiveCounters\): Recalculates elapsed seconds, minutes,) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 514.39 Td (hours, days, heartbeats, breaths, blinks, solar orbit distance, and galactic) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 500.89 Td (distance every 1,000 ms relative to birth_timestamp_ms.) Tj ET
+0.08 0.45 0.72 rg
+BT /F2 10 Tf 60.00 485.39 Td (-) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 485.39 Td (Dynamic SVG Lunar Phase Renderer \(renderMoonSVG\): Constructs an accurate SVG path) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 471.89 Td (using elliptical arc terminators \(A rx ry ...\) corresponding to waxing, waning,) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 458.39 Td (crescent, quarter, gibbous, and full lunar phases.) Tj ET
+0.07 0.12 0.26 rg
+BT /F2 13.5 Tf 54.00 430.89 Td (5. REST API Reference) Tj ET
+0.22 0.74 0.97 RG 1.2 w
+54.00 424.89 m 541.28 424.89 l S
+0.12 0.22 0.42 rg
+BT /F2 11 Tf 54.00 402.89 Td (Endpoint: GET /api/analyze) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 388.89 Td (Query Parameters:) Tj ET
+0.08 0.45 0.72 rg
+BT /F2 10 Tf 60.00 371.09 Td (-) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 371.09 Td (date \(required\): Birth date in ISO format \(YYYY-MM-DD\).) Tj ET
+0.08 0.45 0.72 rg
+BT /F2 10 Tf 60.00 355.59 Td (-) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.6 Tf 72.00 355.59 Td (name \(optional\): User's display name.) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 340.09 Td (Sample JSON Response \(200 OK\):) Tj ET
+0.95 0.96 0.98 rg
+54.00 78.29 487.28 254.00 re f
+0.82 0.85 0.90 RG 0.6 w
+54.00 78.29 487.28 254.00 re S
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 318.29 Td ({) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 306.29 Td (  "ok": true,) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 294.29 Td (  "data": {) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 282.29 Td (    "user": {) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 270.29 Td (      "name": "Zabiada Arman",) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 258.29 Td (      "birth_date_iso": "2000-10-28",) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 246.29 Td (      "birth_date_formatted": "October 28, 2000",) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 234.29 Td (      "birth_weekday": "Saturday",) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 222.29 Td (      "serial_code": "BV-20001028-SC-9496") Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 210.29 Td (    },) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 198.29 Td (    "age_breakdown": {) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 186.29 Td (      "years": 26,) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 174.29 Td (      "months": 0,) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 162.29 Td (      "days": 0,) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 150.29 Td (      "total_days": 9496,) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 138.29 Td (      "total_hours": 227924,) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 126.29 Td (      "total_seconds": 820529200) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 114.29 Td (    }) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 102.29 Td (  }) Tj ET
+0.12 0.16 0.24 rg
+BT /F3 8.5 Tf 64.00 90.29 Td (}) Tj ET
+0.85 0.88 0.92 RG 0.6 w
+54.00 42.00 m 541.28 42.00 l S
+0.45 0.50 0.58 rg
+BT /F1 8.5 Tf 54.00 28.00 Td (BirthVerse  |  Developed by Zabiada Arman) Tj ET
+BT /F1 8.5 Tf 486.28 28.00 Td (Page 3 of 4) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 10 0 R >>
+endobj
+12 0 obj
+<< /Length 2707 >>
+stream
+0.45 0.50 0.58 rg
+BT /F1 8.5 Tf 54.00 803.89 Td (BirthVerse  -  Technical & User Documentation  -  Developed by Zabiada Arman) Tj ET
+0.85 0.88 0.92 RG 0.6 w
+54.00 796.89 m 541.28 796.89 l S
+0.07 0.12 0.26 rg
+BT /F2 13.5 Tf 54.00 761.89 Td (6. Installation & User Guide) Tj ET
+0.22 0.74 0.97 RG 1.2 w
+54.00 755.89 m 541.28 755.89 l S
+0.12 0.22 0.42 rg
+BT /F2 11 Tf 54.00 733.89 Td (6.1 Running the Application Locally) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 719.89 Td (1. Ensure Python 3.10+ is installed \(python3 --version\).) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 702.09 Td (2. Navigate to the project directory:) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 684.29 Td (   bash) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 666.49 Td (   cd birthday) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 648.69 Td () Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 630.89 Td (3. Launch the server:) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 613.09 Td (   bash) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 595.29 Td (   python3 app.py) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 577.49 Td () Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 559.69 Td (4. Open http://127.0.0.1:8080 in any modern web browser.) Tj ET
+0.12 0.22 0.42 rg
+BT /F2 11 Tf 54.00 533.89 Td (6.2 Using the Interface) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 519.89 Td (1. Enter Details: Type your name \(optional\) and select your birth date in the top control deck, then) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 506.09 Td (click Explore My Birthday.) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 488.29 Td (2. Navigate Sections: Use the floating navigation bar to jump between *Overview*, *On This Day in) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 474.49 Td (History*, *Birth Year Capsule*, *Vital & Space Metrics*, *Moon, Zodiac & Planets*, *Milestones*, and) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 460.69 Td (*Summary Card*.) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 442.89 Td (3. Filter Historical Events: Click the category pills \(*All Events*, *World History*, *Science &) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 429.09 Td (Space*, *Culture & Arts*, *Notable Shared Birthdays*\) to filter the historical chronicle.) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 411.29 Td (4. Export or Print Summary: Scroll to the Official Birthday & Life Summary card at the bottom to copy) Tj ET
+0.15 0.18 0.24 rg
+BT /F1 9.8 Tf 54.00 397.49 Td (a formatted text summary to your clipboard or print/save the card as a PDF.) Tj ET
+0.85 0.88 0.92 RG 0.6 w
+54.00 42.00 m 541.28 42.00 l S
+0.45 0.50 0.58 rg
+BT /F1 8.5 Tf 54.00 28.00 Td (BirthVerse  |  Developed by Zabiada Arman) Tj ET
+BT /F1 8.5 Tf 486.28 28.00 Td (Page 4 of 4) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 12 0 R >>
+endobj
+xref
+0 14
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000141 00000 n 
+0000000238 00000 n 
+0000000340 00000 n 
+0000000435 00000 n 
+0000005913 00000 n 
+0000006065 00000 n 
+0000012306 00000 n 
+0000012458 00000 n 
+0000018106 00000 n 
+0000018260 00000 n 
+0000021020 00000 n 
+trailer
+<< /Size 14 /Root 1 0 R >>
+startxref
+21174
+%%EOF

@@ -1,5 +1,7 @@
 /**
  * BirthVerse — Client-Side Interactive Engine
+ * Developed by Zabiada Arman
+ *
  * Handles live-ticking counters, SVG lunar phase rendering, starfield canvas,
  * celebration confetti, smooth section navigation, and API communication.
  */
@@ -27,27 +29,25 @@
       const AudioCtx = window.AudioContext || window.webkitAudioContext;
       if (!AudioCtx) return;
       const ctx = new AudioCtx();
-      const notes = [523.25, 659.25, 783.99, 1046.5]; // C5, E5, G5, C6
+      const notes = [523.25, 659.25, 783.99, 1046.5];
       notes.forEach((freq, idx) => {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.type = "sine";
         osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.08);
         gain.gain.setValueAtTime(0.001, ctx.currentTime + idx * 0.08);
-        gain.gain.exponentialRampToValueAtTime(0.05, ctx.currentTime + idx * 0.08 + 0.04);
+        gain.gain.exponentialRampToValueAtTime(0.045, ctx.currentTime + idx * 0.08 + 0.04);
         gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + idx * 0.08 + 1.1);
         osc.connect(gain);
         gain.connect(ctx.destination);
         osc.start(ctx.currentTime + idx * 0.08);
         osc.stop(ctx.currentTime + idx * 0.08 + 1.15);
       });
-    } catch (_) {
-      // Ignore audio errors if browser blocks autoplay
-    }
+    } catch (_) {}
   }
 
   // ---------------------------------------------------------------------------
-  // 2. Animated Starfield Background
+  // 2. Subtle Ambient Starfield Background
   // ---------------------------------------------------------------------------
   function initStarfield() {
     const canvas = document.getElementById("starfield-canvas");
@@ -56,13 +56,13 @@
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    const stars = Array.from({ length: 130 }, () => ({
+    const stars = Array.from({ length: 110 }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      r: Math.random() * 1.6 + 0.3,
-      alpha: Math.random() * 0.75 + 0.2,
-      speed: Math.random() * 0.18 + 0.04,
-      twinkle: Math.random() * 0.02 + 0.005,
+      r: Math.random() * 1.4 + 0.3,
+      alpha: Math.random() * 0.65 + 0.15,
+      speed: Math.random() * 0.14 + 0.03,
+      twinkle: Math.random() * 0.015 + 0.004,
     }));
 
     window.addEventListener("resize", () => {
@@ -79,7 +79,7 @@
           s.x = Math.random() * width;
         }
         s.alpha += s.twinkle;
-        if (s.alpha > 0.95 || s.alpha < 0.2) s.twinkle = -s.twinkle;
+        if (s.alpha > 0.85 || s.alpha < 0.15) s.twinkle = -s.twinkle;
 
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
@@ -102,15 +102,15 @@
     canvas.height = window.innerHeight;
 
     const colors = ["#38bdf8", "#a855f7", "#ec4899", "#fbbf24", "#34d399"];
-    const particles = Array.from({ length: 75 }, () => ({
+    const particles = Array.from({ length: 65 }, () => ({
       x: canvas.width / 2 + (Math.random() - 0.5) * 260,
       y: canvas.height * 0.28,
-      vx: (Math.random() - 0.5) * 11,
-      vy: Math.random() * -9 - 3,
-      size: Math.random() * 7 + 4,
+      vx: (Math.random() - 0.5) * 10,
+      vy: Math.random() * -8 - 3,
+      size: Math.random() * 6 + 4,
       color: colors[Math.floor(Math.random() * colors.length)],
       rot: Math.random() * Math.PI * 2,
-      vrot: (Math.random() - 0.5) * 0.2,
+      vrot: (Math.random() - 0.5) * 0.18,
       alpha: 1,
     }));
 
@@ -124,7 +124,7 @@
         p.y += p.vy;
         p.vy += 0.24;
         p.rot += p.vrot;
-        p.alpha -= 0.012;
+        p.alpha -= 0.013;
         if (p.alpha > 0) {
           alive = true;
           ctx.save();
@@ -132,11 +132,11 @@
           ctx.translate(p.x, p.y);
           ctx.rotate(p.rot);
           ctx.fillStyle = p.color;
-          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.65);
+          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
           ctx.restore();
         }
       }
-      if (alive && frame < 110) {
+      if (alive && frame < 105) {
         requestAnimationFrame(animateConfetti);
       } else {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -181,18 +181,18 @@
           <stop offset="100%" stop-color="#ca8a04" />
         </radialGradient>
         <filter id="moonGlow" x="-25%" y="-25%" width="150%" height="150%">
-          <feGaussianBlur stdDeviation="5" result="blur" />
+          <feGaussianBlur stdDeviation="4" result="blur" />
           <feComposite in="SourceGraphic" in2="blur" operator="over" />
         </filter>
       </defs>
-      <circle cx="${cx}" cy="${cy}" r="${r + 6}" fill="rgba(253, 224, 71, 0.10)" />
-      <circle cx="${cx}" cy="${cy}" r="${r}" fill="#1e293b" stroke="rgba(148,163,184,0.35)" stroke-width="1.5" />
+      <circle cx="${cx}" cy="${cy}" r="${r + 5}" fill="rgba(253, 224, 71, 0.08)" />
+      <circle cx="${cx}" cy="${cy}" r="${r}" fill="#141c33" stroke="rgba(148,163,184,0.32)" stroke-width="1.5" />
       <g filter="url(#moonGlow)">
         ${litPath}
       </g>
-      <circle cx="46" cy="44" r="6" fill="rgba(15, 23, 42, 0.16)" />
-      <circle cx="72" cy="52" r="9" fill="rgba(15, 23, 42, 0.13)" />
-      <circle cx="55" cy="74" r="7.5" fill="rgba(15, 23, 42, 0.15)" />
+      <circle cx="46" cy="44" r="5.5" fill="rgba(15, 23, 42, 0.18)" />
+      <circle cx="72" cy="52" r="8.5" fill="rgba(15, 23, 42, 0.14)" />
+      <circle cx="55" cy="74" r="7" fill="rgba(15, 23, 42, 0.16)" />
     `;
   }
 
@@ -228,10 +228,10 @@
 
       eventsGrid.innerHTML = listToShow
         .map((ev) => {
-          const badgeNote = ev.exact_date ? `On ${monthDayFormatted}` : "Era & Month Highlight";
+          const badgeNote = ev.exact_date ? `Recorded on ${monthDayFormatted}` : "Era & Month Highlight";
           const linkHtml = ev.url
-            ? `<a href="${ev.url}" target="_blank" rel="noopener noreferrer" class="wiki-link">Read Chronicle ↗</a>`
-            : `<span>Historical Record</span>`;
+            ? `<a href="${ev.url}" target="_blank" rel="noopener noreferrer" class="wiki-link">Source Reference ↗</a>`
+            : `<span>Historical Archive</span>`;
           return `
             <article class="event-card glass-card">
               <div>
@@ -243,7 +243,7 @@
                 <p class="event-desc">${ev.description}</p>
               </div>
               <div class="event-footer">
-                <span>📌 ${badgeNote}</span>
+                <span>${badgeNote}</span>
                 ${linkHtml}
               </div>
             </article>
@@ -299,23 +299,23 @@
     document.getElementById("res-greeting-name").textContent = user.name;
     document.getElementById("res-birth-weekday").textContent = user.birth_weekday;
     document.getElementById("res-weekday-lore").textContent = user.weekday_lore;
-    document.getElementById("res-full-birthdate").textContent = `📅 ${user.birth_date_formatted}`;
-    document.getElementById("res-day-of-year").textContent = `☀️ Day #${user.day_of_year} of the Year`;
-    document.getElementById("res-leap-tag").textContent = `✨ ${age_breakdown.leap_years_experienced} Leap Days Lived`;
-    document.getElementById("res-seasons-tag").textContent = `🍃 ${numFmt.format(age_breakdown.seasons_experienced)} Seasons Experienced`;
+    document.getElementById("res-full-birthdate").textContent = user.birth_date_formatted;
+    document.getElementById("res-day-of-year").textContent = `Day ${user.day_of_year} of the Year`;
+    document.getElementById("res-leap-tag").textContent = `${age_breakdown.leap_years_experienced} Leap Days Lived`;
+    document.getElementById("res-seasons-tag").textContent = `${numFmt.format(age_breakdown.seasons_experienced)} Seasons Experienced`;
 
     document.getElementById("res-next-turning").textContent = `Turning ${next_birthday.turning_age}`;
     document.getElementById("res-next-days").textContent = next_birthday.days_remaining;
     document.getElementById("res-next-hours").textContent = next_birthday.hours_remaining;
     document.getElementById("res-next-mins").textContent = next_birthday.minutes_remaining;
     document.getElementById("res-bday-progress").style.width = `${Math.min(100, Math.max(4, next_birthday.progress_pct))}%`;
-    document.getElementById("res-next-date-sub").textContent = `${next_birthday.date_formatted} • Falls on a ${next_birthday.weekday}`;
+    document.getElementById("res-next-date-sub").textContent = `${next_birthday.date_formatted} · Falls on a ${next_birthday.weekday}`;
 
     // Calendar Age
     document.getElementById("res-years").textContent = age_breakdown.years;
     document.getElementById("res-months").textContent = age_breakdown.months;
     document.getElementById("res-days").textContent = age_breakdown.days;
-    document.getElementById("res-total-months-weeks").textContent = `${numFmt.format(age_breakdown.total_months)} total months • ${numFmt.format(age_breakdown.total_weeks)} total weeks`;
+    document.getElementById("res-total-months-weeks").textContent = `${numFmt.format(age_breakdown.total_months)} total months · ${numFmt.format(age_breakdown.total_weeks)} total weeks`;
 
     // 2. History & Famous Births
     renderHistorySection(history, user.month_day_formatted);
@@ -335,47 +335,49 @@
     document.getElementById("res-price-gold").textContent = cap.gold_per_oz;
 
     // 4. Static Biometrics & Cosmic Sub-labels
-    document.getElementById("res-blood-pumped").textContent = `~${numFmt.format(biometrics.liters_blood_pumped)} liters of blood circulated`;
+    document.getElementById("res-blood-pumped").textContent = `Approx. ${numFmt.format(biometrics.liters_blood_pumped)} liters circulated`;
     document.getElementById("res-hours-slept").textContent = `${numFmt.format(biometrics.hours_slept)} hrs`;
-    document.getElementById("res-dreams-sub").textContent = `~${biometrics.years_slept} years asleep • ~${numFmt.format(biometrics.dreams_had)} dreams`;
-    document.getElementById("res-moon-trips").textContent = `Equivalent to ${numFmt.format(cosmic_journey.moon_trips_equivalent)} trips to the Moon!`;
-    document.getElementById("res-full-moons").textContent = `Witnessed ${numFmt.format(cosmic_journey.full_moons_seen)} Full Moons since birth`;
+    document.getElementById("res-dreams-sub").textContent = `~${biometrics.years_slept} years asleep · ~${numFmt.format(biometrics.dreams_had)} dream cycles`;
+    document.getElementById("res-moon-trips").textContent = `Equivalent to ${numFmt.format(cosmic_journey.moon_trips_equivalent)} lunar transit distances`;
+    document.getElementById("res-full-moons").textContent = `Witnessed ${numFmt.format(cosmic_journey.full_moons_seen)} full synodic moons since birth`;
 
     // 5. Astronomy, Moon, Zodiac & Planets
     const moon = astronomy.moon_phase;
     document.getElementById("res-moon-illum").textContent = `${moon.illumination_pct}% Illuminated`;
-    document.getElementById("res-moon-name").textContent = `${moon.emoji} ${moon.phase_name}`;
+    document.getElementById("res-moon-name").textContent = moon.phase_name;
     document.getElementById("res-moon-age").textContent = `Day ${moon.lunar_age_days} of 29.5-day synodic cycle`;
     document.getElementById("res-moon-lore").textContent = moon.lore;
     renderMoonSVG(moon.cycle_position);
 
     const wz = astronomy.western_zodiac;
     const cz = astronomy.chinese_zodiac;
-    document.getElementById("res-zodiac-element").textContent = `${wz.element} • ${wz.modality}`;
+    document.getElementById("res-zodiac-element").textContent = `${wz.element} · ${wz.modality}`;
     document.getElementById("res-west-symbol").textContent = wz.symbol;
     document.getElementById("res-west-sign").textContent = wz.sign;
     document.getElementById("res-west-ruler").textContent = `Ruled by ${wz.ruler}`;
-    document.getElementById("res-east-emoji").textContent = cz.emoji;
+    document.getElementById("res-east-code").textContent = cz.code;
     document.getElementById("res-east-title").textContent = cz.full_title;
     document.getElementById("res-zodiac-traits").textContent = `${wz.sign}: ${wz.traits} (${cz.full_title}: ${cz.traits})`;
 
     const stone = astronomy.birthstone;
     document.getElementById("res-birth-season").textContent = stone.season_north;
     document.getElementById("res-stone-name").textContent = stone.stone;
-    document.getElementById("res-flower-name").textContent = `🌸 Flower: ${stone.flower}`;
+    document.getElementById("res-flower-name").textContent = `Floral Symbol: ${stone.flower}`;
     document.getElementById("res-stone-meaning").textContent = `Symbolizes: ${stone.meaning}.`;
     const gemOrb = document.getElementById("res-gem-orb");
-    gemOrb.style.background = `radial-gradient(circle at 30% 30%, #ffffff, ${stone.color})`;
-    gemOrb.style.boxShadow = `0 0 28px ${stone.color}`;
+    gemOrb.style.background = `radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35), ${stone.color})`;
+    gemOrb.style.boxShadow = `0 0 24px ${stone.color}66`;
 
     const planetsGrid = document.getElementById("planets-grid");
     planetsGrid.innerHTML = astronomy.planetary_ages
       .map(
         (p) => `
         <div class="planet-card glass-card">
-          <div class="planet-icon" style="color: ${p.color}">${p.icon}</div>
-          <div class="planet-name">${p.name}</div>
-          <div class="planet-age" style="color: ${p.color}">${p.age} <small style="font-size:0.7rem">yrs</small></div>
+          <div class="planet-top">
+            <span class="planet-name">${p.name}</span>
+            <span class="planet-code" style="color: ${p.color}">${p.code}</span>
+          </div>
+          <div class="planet-age" style="color: ${p.color}">${p.age} <small style="font-size:0.7rem;color:var(--text-muted)">yrs</small></div>
           <div class="planet-next">Turn ${p.next_birthday_age} on ${p.next_birthday_date}</div>
         </div>
       `
@@ -390,11 +392,11 @@
         <div class="milestone-card glass-card ${m.is_past ? "past-milestone" : "future-milestone"}">
           <div>
             <div class="m-top">
-              <span class="m-icon">${m.icon}</span>
+              <span class="m-tag">${m.tag}</span>
               <span class="m-badge ${m.is_past ? "past" : "future"}">${m.status_text}</span>
             </div>
             <div class="m-title">${m.label}</div>
-            <div class="m-date">📅 ${m.date_formatted}</div>
+            <div class="m-date">${m.date_formatted}</div>
           </div>
           <div class="m-desc">${m.desc}</div>
         </div>
@@ -407,7 +409,7 @@
     document.getElementById("pass-origin").textContent = `${user.birth_date_iso} (${user.birth_weekday})`;
     document.getElementById("pass-serial").textContent = user.serial_code;
     document.getElementById("pass-days-hours").textContent = `${numFmt.format(age_breakdown.total_days)} Days / ${numFmt.format(age_breakdown.total_hours)} Hrs`;
-    document.getElementById("pass-astro").textContent = `${moon.phase_name} • ${wz.sign}`;
+    document.getElementById("pass-astro").textContent = `${moon.phase_name} · ${wz.sign}`;
     document.getElementById("pass-distance").textContent = `${numFmt.format(cosmic_journey.solar_orbit_km)} km`;
 
     // Start Live Real-Time Ticker
@@ -437,7 +439,6 @@
       document.getElementById("live-minutes-sub").textContent = `${numFmt.format(elapsedMins)} total minutes experienced`;
       document.getElementById("live-seconds").textContent = numFmt.format(elapsedSec);
 
-      // Live biological & cosmic counters
       const heartbeats = Math.floor(elapsedSec * (72.0 / 60.0));
       const breaths = Math.floor(elapsedSec * (16.0 / 60.0));
       const blinks = Math.floor(elapsedSec * (15.0 / 60.0) * (16.0 / 24.0));
@@ -498,12 +499,13 @@
     const a = activeProfile.age_breakdown;
     const as = activeProfile.astronomy;
     const summary = [
-      `✨ BIRTHVERSE LIFE SUMMARY (${u.serial_code}) ✨`,
+      `BIRTHVERSE LIFE SUMMARY (${u.serial_code})`,
+      `Developed by Zabiada Arman`,
       `Name: ${u.name}`,
       `Born: ${u.birth_date_formatted} (${u.birth_weekday})`,
-      `Lived: ${numFmt.format(a.total_days)} Days • ${numFmt.format(a.total_hours)} Hours • ${numFmt.format(a.total_seconds)} Seconds`,
-      `Moon at Birth: ${as.moon_phase.emoji} ${as.moon_phase.phase_name} (${as.moon_phase.illumination_pct}% lit)`,
-      `Zodiac: ${as.western_zodiac.symbol} ${as.western_zodiac.sign} | ${as.chinese_zodiac.emoji} ${as.chinese_zodiac.full_title}`,
+      `Lived: ${numFmt.format(a.total_days)} Days · ${numFmt.format(a.total_hours)} Hours · ${numFmt.format(a.total_seconds)} Seconds`,
+      `Moon at Birth: ${as.moon_phase.phase_name} (${as.moon_phase.illumination_pct}% illuminated)`,
+      `Zodiac: ${as.western_zodiac.sign} | ${as.chinese_zodiac.full_title}`,
       `Distance Orbiting the Sun: ${numFmt.format(activeProfile.cosmic_journey.solar_orbit_km)} km`,
     ].join("\n");
 
@@ -511,7 +513,7 @@
       await navigator.clipboard.writeText(summary);
       const btn = document.getElementById("btn-copy-summary");
       const orig = btn.textContent;
-      btn.textContent = "✅ Copied to Clipboard!";
+      btn.textContent = "Copied to Clipboard";
       setTimeout(() => (btn.textContent = orig), 2200);
     } catch (_) {}
   });
